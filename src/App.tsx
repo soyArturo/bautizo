@@ -69,7 +69,7 @@ function WhatsAppButton({
   number: string
 }) {
   const message = encodeURIComponent(
-    `¡Hola! ✨ Quiero confirmar mi asistencia a la revelación de ${invitation.babyName}. ¡Ahí estaremos! 💕💙`
+    `¡Hola! ✨ Quiero confirmar mi asistencia al bautizo. ¡Ahí estaremos! 💕`
   )
 
   return (
