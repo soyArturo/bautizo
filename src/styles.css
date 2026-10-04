@@ -13,7 +13,7 @@
   --white: #fff;
   font-family: 'Montserrat', sans-serif;
   color: var(--text);
-  background: var(--cream);
+  background: var(--pink);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -56,7 +56,7 @@ a {
   align-items: center;
   justify-content: center;
 
-  background: #FFF2e5;
+  background: #dc8c9a;
 }
 
 .cover-video {
@@ -84,7 +84,7 @@ a {
   position: absolute;
   z-index: 2;
 
-  top: 25%;
+  bottom: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -93,9 +93,7 @@ a {
 
   padding: 15px 24px;
 
-  background: linear-gradient(135deg,
-      #f7dc93,
-      #d7b45d);
+  background: var(--pink);
 
   color: #25233a;
 
@@ -119,7 +117,7 @@ a {
   letter-spacing: .18em;
   font-size: 10px;
   font-weight: 700;
-  color: #a2916a;
+  color: #dc8c9a;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -477,13 +475,16 @@ h2 {
 }
 
 .story {
-  background: #fffaf1;
+  background: var(--pink);
 }
 
-.story h2 em {
-  font-family: 'Great Vibes';
+.story h2 {
   font-weight: 400;
-  color: #b68a42;
+  color: #fff;
+}
+
+.story p {
+  color: #fff;
 }
 
 .heart-line {
@@ -491,38 +492,38 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  color: #c39b53;
+  color: #fff;
   margin: 28px auto 12px;
 }
 
 .heart-line span {
   width: 48px;
   height: 1px;
-  background: #dfcfae;
+  background: #fff;
 }
 
 .signature {
   font-family: 'Great Vibes';
-  color: #a98445 !important;
+  color: #fff !important;
   font-size: 22px !important;
 }
 
 .details {
-  background: #f4f0e8;
+  background: #fff;
 }
 
 .date-card {
   max-width: 390px;
   margin: 28px auto;
   padding: 20px;
-  border: 1px solid #ded4bd;
+  border: 1px solid #dc8c9a;
   border-radius: 18px;
   background: rgba(255, 255, 255, .55);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color: #a77e39;
+  color: #dc8c9a;
 }
 
 .date-card div {
@@ -560,8 +561,8 @@ h2 {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #e5dbc6;
-  color: #8f6b34;
+  background: var(--pink);
+  color: #fff;
   flex: 0 0 auto;
 }
 
@@ -594,16 +595,16 @@ h2 {
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  border: 1px solid #bfa56d;
+  border: 1px solid #dc8c9a;
   border-radius: 99px;
   padding: 12px 17px;
-  color: #80632f;
+  color: #dc8c9a;
   font-size: 11px;
   font-weight: 700;
 }
 
 .countdown-section {
-  background: #fffdf8;
+  background: #fff;
 }
 
 .section-icon {
@@ -622,14 +623,14 @@ h2 {
 .countdown div {
   padding: 15px 4px;
   border-radius: 14px;
-  background: #a09797ff;
+  background: #dc8c9a;
   color: white;
 }
 
 .countdown strong {
   display: block;
   font: 600 29px 'Cormorant Garamond';
-  color: var(--gold-light);
+  color: #fff;
 }
 
 .countdown span {
@@ -699,7 +700,7 @@ h2 {
 }
 
 .rsvp {
-  background: #fff9ef;
+  background: #fff;
 }
 
 .rsvp h2 {
@@ -1446,4 +1447,48 @@ body.team-selection-active {
   height: auto;
 
   object-fit: contain;
+}
+
+.gift-text-options {
+  width: min(90vw, 430px);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+.gift-text-option {
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.07);
+
+  text-align: center;
+}
+
+.gift-text-option strong {
+  display: block;
+
+  font-size: 1.15rem;
+
+  margin-bottom: 7px;
+}
+
+.gift-text-option p {
+  margin: 0;
+
+  font-size: 0.9rem;
+
+  line-height: 1.5;
+}
+
+.gift-text-option p span {
+  opacity: 0.75;
 }

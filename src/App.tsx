@@ -10,13 +10,6 @@ import {
 
 import { invitation } from './config'
 import coverVideo from './assets/cover.mp4'
-import heroVideo from './assets/1.mp4'
-import ninaImage from './assets/nina.png'
-import ninoImage from './assets/nino.png'
-import teamImage from './assets/team.png'
-import regaloNinoImage from './assets/regalonino.png'
-import regaloNinaImage from './assets/regalonina.png'
-import footerImage from './assets/footer.png'
 
 type Screen = 'cover' | 'invitation'
 
@@ -245,48 +238,6 @@ function App() {
    * CONTINUAR DESPUÉS DE SELECCIONAR
    * ============================================================
    */
-  const handleContinue = () => {
-    /*
-     * Seguridad:
-     * si no hay selección, no hacemos absolutamente nada.
-     */
-    if (!selectedTeam) return
-
-    const story = storyRef.current
-
-    if (!story) return
-
-    /*
-     * Calculamos dónde está la siguiente sección
-     * antes de desbloquear el body.
-     */
-    const targetPosition = story.offsetTop
-
-    /*
-     * Desbloqueamos el documento.
-     */
-    document.body.style.position = ''
-    document.body.style.top = ''
-    document.body.style.left = ''
-    document.body.style.right = ''
-    document.body.style.width = ''
-    document.body.style.overflow = ''
-
-    document.documentElement.style.overflow = ''
-
-    setTeamLocked(false)
-
-    /*
-     * Esperamos un frame para que el navegador
-     * vuelva a calcular correctamente el layout.
-     */
-    requestAnimationFrame(() => {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth',
-      })
-    })
-  }
 
   /*
    * ============================================================
@@ -311,7 +262,7 @@ function App() {
         <div className="cover-video-overlay" />
 
         <button
-          className="primary-button cover-open-button"
+          className="cover-open-button"
           onClick={() => setScreen('invitation')}
         >
           Abrir invitación
@@ -330,136 +281,6 @@ function App() {
     <main className="page">
 
       {/* ======================================================
-          HERO
-      ====================================================== */}
-
-      <section className="hero section">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-      </section>
-
-
-      {/* ======================================================
-          TEAM NIÑO / NIÑA
-      ====================================================== */}
-
-      <section
-        ref={teamSectionRef}
-        className="section team-selection"
-      >
-        <div className="team-selection-content">
-
-          <span className="section-kicker">
-            Antes de continuar...
-          </span>
-
-          <div className="team-title-image">
-            <img
-              src={teamImage}
-              alt="Team Niño o Team Niña"
-            />
-          </div>
-
-          {/* ==================================================
-              OPCIONES
-          ================================================== */}
-
-          <div className="team-options">
-
-            {/* =========================
-                TEAM NIÑO
-            ========================= */}
-
-            <button
-              type="button"
-              className={`team-option team-nino ${selectedTeam === 'nino'
-                ? 'selected'
-                : ''
-                }`}
-              onClick={() => {
-                setSelectedTeam('nino')
-              }}
-            >
-              <div className="team-image-wrapper">
-                <img
-                  src={ninoImage}
-                  alt="Team niño"
-                />
-              </div>
-
-              <span className="team-option-title">
-                Niño
-              </span>
-
-              <span className="team-check">
-                {selectedTeam === 'nino' ? '✓' : ''}
-              </span>
-            </button>
-
-
-            {/* =========================
-                TEAM NIÑA
-            ========================= */}
-
-            <button
-              type="button"
-              className={`team-option team-nina ${selectedTeam === 'nina'
-                ? 'selected'
-                : ''
-                }`}
-              onClick={() => {
-                setSelectedTeam('nina')
-              }}
-            >
-              <div className="team-image-wrapper">
-                <img
-                  src={ninaImage}
-                  alt="Team niña"
-                />
-              </div>
-
-              <span className="team-option-title">
-                Niña
-              </span>
-
-              <span className="team-check">
-                {selectedTeam === 'nina' ? '✓' : ''}
-              </span>
-            </button>
-
-          </div>
-
-
-          {/* ==================================================
-              CONTINUAR
-          ================================================== */}
-
-          <button
-            type="button"
-            className={`team-continue ${selectedTeam ? 'enabled' : ''
-              }`}
-            disabled={!selectedTeam}
-            onClick={handleContinue}
-          >
-            {selectedTeam
-              ? 'Continuar ✨'
-              : 'Elige un equipo'}
-          </button>
-
-        </div>
-      </section>
-
-
-      {/* ======================================================
           STORY
       ====================================================== */}
 
@@ -467,23 +288,13 @@ function App() {
         ref={storyRef}
         className="section story"
       >
-        <span className="section-kicker">
-          Érase una vez
-        </span>
-
         <h2>
-          Una historia de <em>amor</em> que cada día crecía un poquito más…
+          Dios me ha regalado una hermosa familia y hoy quiero dar un paso muy especial en mi vida.
         </h2>
 
         <p>
-          Mis papás están muy felices porque pronto llegaré a sus vidas,
-          y nuestra familia está a punto de comenzar una nueva y maravillosa aventura.
-        </p>
-
-        <p>
-          Aunque todavía no pueden conocerme, ya me esperan con todo su amor e ilusión.
-          Hoy quiero compartir con ustedes un momento muy especial de mi pequeña historia,
-          en el que juntos descubriremos quién se esconde detrás de esta dulce espera.
+          Mis papás y yo queremos invitarte a acompañarnos en mi Bautizo y compartir juntos este día
+          lleno de amor y bendiciones.
         </p>
 
         <div className="heart-line">
@@ -505,7 +316,7 @@ function App() {
       <section className="section details">
 
         <span className="section-kicker">
-          La gran aventura
+          Un momento muy especial
         </span>
 
         <h2>
@@ -520,10 +331,6 @@ function App() {
             <strong>
               {invitation.event.dateLabel}
             </strong>
-
-            <span>
-              {invitation.event.timeLabel}
-            </span>
           </div>
         </div>
 
@@ -536,7 +343,59 @@ function App() {
 
           <div>
             <small>
-              Comenzamos
+              Misa
+            </small>
+
+            <strong>
+              {invitation.event.timeLabelMisa}
+            </strong>
+          </div>
+
+        </div>
+
+
+        <div className="detail-row">
+
+          <div className="detail-icon">
+            <MapPin size={21} />
+          </div>
+
+          <div>
+            <small>
+              El lugar de la misa
+            </small>
+
+            <strong>
+              {invitation.event.addressMisa}
+            </strong>
+
+            <span>
+              {invitation.event.addressMisaDetail}
+            </span>
+          </div>
+
+        </div>
+
+
+        <a
+          className="map-button"
+          href={invitation.event.mapsUrlMisa}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MapPin size={18} />
+          Ver ubicación
+        </a>
+
+        <div className="detail-row">
+
+          <div className="detail-icon">
+            <Clock3 size={21} />
+          </div>
+
+          <div>
+            <small>
+              Comida
             </small>
 
             <strong>
@@ -555,7 +414,7 @@ function App() {
 
           <div>
             <small>
-              El lugar mágico
+              El lugar de la comida
             </small>
 
             <strong>
@@ -586,116 +445,41 @@ function App() {
     DRESS CODE
 ====================================================== */}
 
-      <section
-        className={`section dress-code ${selectedTeam === 'nino'
-          ? 'dress-code-nino'
-          : 'dress-code-nina'
-          }`}
-      >
+      <section className="section dress-code dress-code-nina">
+
         <span className="section-kicker">
-          Una pista mágica...
+          Si deseas hacerme un regalito...
         </span>
 
         <h2>
-          ¿Cómo nos vestimos?
+          Algunas ideas 💕
         </h2>
 
-        <p className="dress-code-intro">
-          Elige tu color y acompáñanos en esta
-          <br />
-          gran aventura ✨
-        </p>
+        <div className="gift-text-options">
 
-        {/* COLOR DEL VESTIMENTA */}
-
-        <div className="dress-code-color-card">
-
-          <span
-            className={`color-circle ${selectedTeam === 'nino'
-              ? 'sky-blue'
-              : 'pastel-pink'
-              }`}
-          />
-
-          <div>
-            <span>
-              Si elegiste
-            </span>
-
+          <div className="gift-text-option">
             <strong>
-              {selectedTeam === 'nino'
-                ? 'TEAM NIÑO 💙'
-                : 'TEAM NIÑA 💗'}
+              💵 Sobre
             </strong>
 
             <p>
-              Te invitamos a vestir de{' '}
-              {selectedTeam === 'nino'
-                ? 'azul cielo'
-                : 'rosa pastel'}
+              Un sobre con mucho cariño para ayudar
+              <br />
+              en esta nueva aventura.
             </p>
           </div>
 
-        </div>
+          <div className="gift-text-option">
+            <strong>
+              👗 Ropita
+            </strong>
 
-
-        {/* REGALOS */}
-
-        <div className="gift-section">
-
-          <span className="section-kicker">
-            Si deseas hacernos un regalito...
-          </span>
-
-          <h3>
-            Hay unas cositas que nos ayudarán mucho 💕
-          </h3>
-
-          <div className="gift-image-wrapper">
-
-            <img
-              src={
-                selectedTeam === 'nino'
-                  ? regaloNinoImage
-                  : regaloNinaImage
-              }
-              alt={
-                selectedTeam === 'nino'
-                  ? 'Pañales y toallas para bebé'
-                  : 'Pañales y toallas para bebé'
-              }
-            />
-
+            <p>
+              Ropa para bebé en talla <strong>24 meses</strong>.
+              <br />
+              <span>No zapatos, por favor.</span>
+            </p>
           </div>
-
-          {selectedTeam === 'nino' && (
-            <div className="diaper-note">
-              <strong>
-                🍼 Pañales
-              </strong>
-
-              <p>
-                De preferencia en <strong>etapa 1 y etapa 2</strong>.
-              </p>
-            </div>
-          )}
-
-        </div>
-
-
-        {/* BLANCO RESERVADO */}
-
-        <div className="white-reserved">
-
-          <span className="white-color-circle" />
-
-          <p>
-            <strong>Importante:</strong>
-            <br />
-            El color blanco está reservado exclusivamente
-            <br />
-            para los papás 🤍
-          </p>
 
         </div>
 
@@ -720,10 +504,6 @@ function App() {
 
         <Countdown />
 
-        <p>
-          para descubrir el gran secreto ✨
-        </p>
-
       </section>
 
 
@@ -743,12 +523,6 @@ function App() {
           ¡Queremos celebrar contigo!
         </h2>
 
-        <p>
-          Elige con quién quieres confirmar tu asistencia
-          y se abrirá WhatsApp con un mensaje listo para
-          enviar.
-        </p>
-
 
         <div className="rsvp-cards">
 
@@ -758,51 +532,11 @@ function App() {
 
           <div className="rsvp-card">
 
-            <div className="avatar avatar-mom">
-              ♡
-            </div>
 
-            <div>
-              <strong>
-                {invitation.parents.mom}
-              </strong>
-
-              <span>
-                Confirmar por WhatsApp
-              </span>
-            </div>
 
             <WhatsAppButton
               person={invitation.parents.mom}
               number={invitation.whatsapp.mom}
-            />
-
-          </div>
-
-
-          {/* =========================
-              PAPÁ
-          ========================= */}
-
-          <div className="rsvp-card">
-
-            <div className="avatar avatar-dad">
-              ★
-            </div>
-
-            <div>
-              <strong>
-                {invitation.parents.dad}
-              </strong>
-
-              <span>
-                Confirmar por WhatsApp
-              </span>
-            </div>
-
-            <WhatsAppButton
-              person={invitation.parents.dad}
-              number={invitation.whatsapp.dad}
             />
 
           </div>
@@ -812,16 +546,7 @@ function App() {
       </section>
 
 
-      {/* ======================================================
-          FOOTER
-      ====================================================== */}
 
-      <footer className="footer">
-        <img
-          src={footerImage}
-          alt="Decoración final de la invitación"
-        />
-      </footer>
 
     </main>
   )
