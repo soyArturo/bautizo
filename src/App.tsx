@@ -93,9 +93,6 @@ function App() {
    * nino    = Team Niño
    * nina    = Team Niña
    */
-  const [selectedTeam, setSelectedTeam] = useState<
-    'nino' | 'nina' | null
-  >(null)
 
   /*
    * Indica si la sección Team está bloqueando el scroll.
@@ -121,9 +118,6 @@ function App() {
    */
   useEffect(() => {
     if (screen !== 'invitation') return
-
-    // Si ya eligió un equipo, no necesitamos volver a bloquear.
-    if (selectedTeam) return
 
     const handleScroll = () => {
       const section = teamSectionRef.current
@@ -166,7 +160,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [screen, selectedTeam, teamLocked])
+  }, [screen, teamLocked])
 
   /*
    * ============================================================
